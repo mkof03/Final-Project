@@ -1,0 +1,30 @@
+/* Default Dark Mode (Bootstrap Default) */
+[data-bs-theme="dark"] {
+    background-color: #121212 !important; /* Dark background */
+    color: #ffffff !important; /* Light text */
+}
+
+/* Light Mode Fix */
+[data-bs-theme="light"] {
+    background-color: #ffffff !important; /* Light background */
+    color: #000000 !important; /* Dark text */
+}
+
+/* Navbar Fix */
+[data-bs-theme="light"] .navbar {
+    background-color: #f8f9fa !important; /* Light theme navbar */
+}
+
+[data-bs-theme="light"] .navbar .nav-link {
+    color: #000000 !important; /* Dark text for navbar links */
+}
+
+[data-bs-theme="light"] .navbar .btn-outline-light {
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+[data-bs-theme="light"] .navbar .btn-outline-light:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
