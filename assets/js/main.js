@@ -1,8 +1,12 @@
-document.getElementById('darkModeToggle').addEventListener('click',()=>{
-    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
-        document.documentElement.setAttribute('data-bs-theme','light')
+document.getElementById('darkModeToggle').addEventListener('click', () => {
+    const root = document.documentElement;
+    const darkModeButton = document.getElementById('darkModeToggle');
+
+    if (root.getAttribute('data-bs-theme') === 'dark') {
+        root.setAttribute('data-bs-theme', 'light');
+        darkModeButton.innerHTML = '🌙';
+    } else {
+        root.setAttribute('data-bs-theme', 'dark');
+        darkModeButton.innerHTML = '☀️';
     }
-    else {
-        document.documentElement.setAttribute('data-bs-theme','dark')
-    }
-})
+});
