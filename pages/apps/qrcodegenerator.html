@@ -3,45 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QR Code</title>
-  <!-- Import Bootstrap CSS from your local copy -->
-
-  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <title>PowerApps Team</title>
+  <!-- Import Bootstrap CSS from local copy -->
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
   <style>
+
+    .custom-rounded {
+      border-radius: 30px;
+    }
+
+    #imgBox{
+      width: 200;
+      border-radius: 5px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1s;
+    }
+
+    #imgBox img{
+      width: 80%;
+      padding: 10px;
+    }
+
+    #imgBox.show-img{
+      max-height: 400px;
+      margin: 10px auto;
+     
+    }
+
+
+
   </style>
 </head>
 
-<script src="/assets/js/main.js"></script>
-
 <body>
-  <!-- Nav bar will be loaded here -->
-  <div id="navbar"></div>
+    
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="../../pages/home/index.html">PowerApps</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="../../pages/team/index.html">Team</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../pages/about/index.html">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Apps</a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="../../pages/apps/weather.html">Weather</a>
+                      <a class="dropdown-item" href="../../pages/apps/qrcodegenerator.html">QR Code Generator</a>
+                      <a class="dropdown-item" href="../../pages/apps/stopwatch.html">Password Generator</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="../../pages/apps/index.html">View All</a>
+                  </div>
+              </li>
+          </ul>
+          <!-- Dark Mode Toggle aligned to the right -->
+          <button id="darkModeToggle" class="btn ms-auto">
+              ☀️
+          </button>
+      </div>
+  </div>
+</nav>
 
 
-  <!--Put Page content here:-->
-<div class="container">
 
+
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+      <br><br><br>
+      <div class="card" style="border-radius: 20%">
+        <div class="card-body bg-secondary text-light custom-rounded">
+          
+            <div class="form-group">
+              <h3>QR Code Generator</h3>
+              <br>
+              <label for="textInput">Enter URL</label>
+              <input type="text" class="form-control me-2" id="qrText" placeholder="https://www.google.com" required>
+              <small id="errorMessage" class="text-danger"></small>
+            </div>
+            <br>
+            <div id="imgBox" class="d-flex justify-content-center">
+              <img src="" alt="qr code" id="qrImage">
+            </div>
+            <div class="d-flex">
+              <button onclick="GenerateQR()" type="submit" class="btn btn-primary mt-2 ms-auto">Generate Code</button>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 
-
-
-
-
-
   <!-- Footer will be loaded here -->
-  <div id="footer"></div>
+ 
+  <!-- JQuery JS Library used to load data without refreshing whole page -->
+  <script src="../../assets/js/jquery-3.7.1.min.js"></script>
 
-  <!-- Include jQuery, Popper, and Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!--Required JS for many Bootstrap Elements-->
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Load the common nav bar and footer -->
+  <!--Custom Project JS-->
+  <script src="../../assets/js/main.js"></script>
+
   <script>
-    $("#navbar").load("/partials/navbar.html");
-    // $("#footer").load("footer.html");
+
+    let imgBox =document.getElementById("imgBox")
+    let qrImage =document.getElementById("qrImage")
+    let qrText =document.getElementById("qrText")
+    var errorMessage = document.getElementById("errorMessage");
+
+    function GenerateQR(){
+      if(qrText.value.length > 0){
+      qrImage.src ="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=" + qrText.value;
+      imgBox.classList.add("show-img");
+      }
+      else{
+
+        errorMessage.textContent = "Input cannot be empty.";
+      }
+
+    }
+
+    qrText.addEventListener("input", function(){
+    if(qrText.value.trim() !== "") {
+      errorMessage.textContent = "";
+    }
+  });
   </script>
+
 </body>
 </html>

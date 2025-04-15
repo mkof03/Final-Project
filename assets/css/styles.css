@@ -1,30 +1,74 @@
-/* Default Dark Mode (Bootstrap Default) */
-[data-bs-theme="dark"] {
-    background-color: #121212 !important; /* Dark background */
-    color: #ffffff !important; /* Light text */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+.hero img {
+    max-width: 300px;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+.hero h1 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+.btn-contact {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+.btn-contact:hover {
+    background-color: #444;
+}
+.contact-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.contact-section div {
+    flex: 1;
+    text-align: center;
+}
+.social-links a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    margin: 0.5rem 0;
+}
+.social-links a:hover {
+    text-decoration: underline;
+}
+.grabber-yellow {
+    color: #FFEB3B;
+}
+.grabber-green {
+    color: #32FF00;
+}
+.grabber-blue {
+    color: #2b6be4;
+}
+.grabber-orange {
+    color: #FF5733;
+}
+.grabber-red {
+    color: #C30010;
+}
+.sterling-gray {
+    color: #A6A6A6;
+}
+.sae-purple {
+    color: #6A498E;
+}
+.teal {
+    color: #20B2AA;
 }
 
-/* Light Mode Fix */
-[data-bs-theme="light"] {
-    background-color: #ffffff !important; /* Light background */
-    color: #000000 !important; /* Dark text */
-}
-
-/* Navbar Fix */
-[data-bs-theme="light"] .navbar {
-    background-color: #f8f9fa !important; /* Light theme navbar */
-}
-
-[data-bs-theme="light"] .navbar .nav-link {
-    color: #000000 !important; /* Dark text for navbar links */
-}
-
-[data-bs-theme="light"] .navbar .btn-outline-light {
-    color: #000000 !important;
-    border-color: #000000 !important;
-}
-
-[data-bs-theme="light"] .navbar .btn-outline-light:hover {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-}
+  

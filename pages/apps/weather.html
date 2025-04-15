@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" id="index">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PowerApps Team</title>
+  <!-- Import Bootstrap CSS from local copy -->
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    /* Basic styling for the body to center content and set a background */
+  /* Ensure full height for background */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background 0.5s ease-in-out;
+}
+
+/* Navbar fix */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Centering the dashboard */
+.container-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 56px); /* Subtract the height of the navbar */
+  padding-top: 56px;
+}
+
+/* Weather dashboard styling */
+.dashboard {
+  background: rgba(0, 119, 182, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+    /* Header styling for location and time display */
+    .header {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Container for the forecast details */
+    .forecast {
+      background: white;
+      color: black;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    /* Individual forecast item rows */
+    .forecast-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* Set a small icon size for forecast images */
+    .forecast-item img {
+      width: 30px;
+    }
+  </style>
+</head>
+<body>
+    <script src="../../assets/js/weather.js"></script>
+
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../pages/home/index.html">PowerApps</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../pages/team/index.html">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../pages/about/index.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Apps</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../../pages/apps/weather.html">Weather</a>
+                            <a class="dropdown-item" href="../../pages/apps/qrcodegenerator.html">QR Code Generator</a>
+                            <a class="dropdown-item" href="../../pages/apps/stopwatch.html">Password Generator</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="../../pages/apps/index.html">View All</a>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Dark Mode Toggle aligned to the right -->
+                <button id="darkModeToggle" class="btn ms-auto">
+                    ☀️
+                </button>
+            </div>
+        </div>
+      </nav>
+<br>
+      <div class="container-main">
+        <div class="dashboard">
+          <div class="header">
+            <h1 id="location">Loading location...</h1>
+            <p id="datetime"></p>
+          </div>
+          <div class="main-weather">
+            <h2 id="temperature">--°</h2>
+            <p id="condition">Loading...</p>
+            <p id="high-low">Day --° / Night --°</p>
+          </div>
+          <div class="forecast">
+            <h3>Today's Forecast</h3>
+            <div class="forecast-details">
+              <div class="forecast-item">
+                <p>Morning</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/6474/6474810.png" alt="Morning Icon" />
+                <h4 id="morning-temp">--°</h4>
+              </div>
+              <div class="forecast-item">
+                <p>Afternoon</p>
+                <img src="https://cdn-icons-png.freepik.com/512/11175/11175473.png" alt="Afternoon Icon" />
+                <h4 id="afternoon-temp">--°</h4>
+              </div>
+              <div class="forecast-item">
+                <p>Evening</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/5776/5776405.png" alt="Evening Icon" />
+                <h4 id="evening-temp">--°</h4>
+              </div>
+              <div class="forecast-item">
+                <p>Overnight</p>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbikYuGrNubAHJt2i3fr2BuKwrqHTGoi7kKg&s"
+                  alt="Overnight Icon" />
+                <h4 id="overnight-temp">--°</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- Footer will be loaded here -->
+ 
+  <!-- JQuery JS Library used to load data without refreshing whole page -->
+  <script src="../../assets/js/jquery-3.7.1.min.js"></script>
+
+  <!--Required JS for many Bootstrap Elements-->
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+
+  <!--Custom Project JS-->
+  <script src="../../assets/js/main.js"></script>
+
+    </body>
+</html>
