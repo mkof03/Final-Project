@@ -32,7 +32,8 @@
                   <div class="dropdown-menu">
                       <a class="dropdown-item" href="../../pages/apps/weather.html">Weather</a>
                       <a class="dropdown-item" href="../../pages/apps/qrcodegenerator.html">QR Code Generator</a>
-                      <a class="dropdown-item" href="../../pages/apps/stopwatch.html">Password Generator</a>
+                      <a class="dropdown-item" href="../../pages/apps/passwordgenerator.html">Password Generator</a>
+                      <a class="dropdown-item" href="../../pages/apps/stopwatch.html">Stopwatch</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="../../pages/apps/index.html">View All</a>
                   </div>
@@ -47,6 +48,22 @@
 </nav>
 <br>
 <main>
+
+<!-- 2. Toast container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="successToast" class="toast align-items-center text-bg-success border-0">
+      <div class="d-flex">
+        <div class="toast-body">
+          Thanks for your suggestion!
+        </div>
+        <button
+          type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+
     <div class="container mt-5">
         <h1 class="fw-bold text-center">About PowerApps</h1>
         <p class="lead text-center">PowerApps is a collection of simple, effective, and user-friendly web applications designed to make your daily tasks easier.</p>
@@ -77,7 +94,12 @@
                 <tr>
                     <td><a href="../../pages/apps/passwordgenerator.html">Password Generator</a></td>
                     <td>Generate strong, secure passwords to keep your accounts safe.</td>
-                    <td>Work in progress...</td>
+                    <td>Chayton Pfannenstiel</td>
+                </tr>
+                <tr>
+                    <td><a href="../../pages/apps/stopwatch.html">Stopwatch</a></td>
+                    <td>Stopwatch and timer with advanced input validation</td>
+                    <td>Chayton Pfannenstiel</td>
                 </tr>
             </tbody>
         </table>
@@ -124,7 +146,7 @@
             <h1 class="fw-bold text-center">Suggestion Box</h1>
             <p class="text-center">We value your feedback! Please share your suggestions.</p>
             
-            <form>
+            <form id="suggestionForm">
                 <!-- Text Element -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Your Name</label>
@@ -211,6 +233,16 @@
 
   <!--Custom Project JS-->
   <script src="../../assets/js/main.js"></script>
-
+  
+  <script>
+    // grab toast element and create the Toast instance
+    const toastEl = document.getElementById('successToast');
+    const successToast = bootstrap.Toast.getOrCreateInstance(toastEl);
+  
+    // handle "submission"
+    document.getElementById('suggestionForm').addEventListener('submit', e => {
+      e.preventDefault(); successToast.show(); e.target.reset();              
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,71 @@
+    /* Basic styling for the body to center content and set a background */
+  /* Ensure full height for background */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 0.5s ease-in-out;
+  }
+  
+  /* Navbar fix */
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* Centering the dashboard */
+  .container-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 56px); /* Subtract the height of the navbar */
+    padding-top: 56px;
+  }
+  
+  /* Weather dashboard styling */
+  .dashboard {
+    background: rgba(0, 119, 182, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+      /* Header styling for location and time display */
+      .header {
+        font-size: 20px;
+        font-weight: bold;
+      }
+  
+      /* Container for the forecast details */
+      .forecast {
+        background: white;
+        color: black;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 15px;
+      }
+  
+      /* Individual forecast item rows */
+      .forecast-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 10px;
+        border-bottom: 1px solid #ddd;
+      }
+  
+      /* Set a small icon size for forecast images */
+      .forecast-item img {
+        width: 30px;
+      }

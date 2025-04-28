@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PowerApps Password Generator - WIP</title>
+  <title>PowerApps Stopwatch</title>
   <!-- Import Bootstrap CSS from local copy -->
   <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../assets/css/styles.css">
-  <style>
+  <link rel="stylesheet" href="../../assets/css/stopwatch.css">
 
-</style>
 </head>
 <body>
     
@@ -32,7 +31,8 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../../pages/apps/weather.html">Weather</a>
                             <a class="dropdown-item" href="../../pages/apps/qrcodegenerator.html">QR Code Generator</a>
-                            <a class="dropdown-item" href="../../pages/apps/stopwatch.html">Password Generator</a>
+                            <a class="dropdown-item" href="../../pages/apps/passwordgenerator.html">Password Generator</a>
+                            <a class="dropdown-item" href="../../pages/apps/stopwatch.html">Stopwatch</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../pages/apps/index.html">View All</a>
                         </div>
@@ -48,19 +48,59 @@
 
       <br>
 
-
-
-        <div class="container d-flex justify-content-center text-center">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="fw-bold">🚧 Work in Progress 🚧</h1>
-                    <p class="lead">We're working hard to bring this page to life. Check back soon!</p>
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            </div>
+          <!-- Toast for validation warnings -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="validationToast" class="toast align-items-center text-bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">Please enter only non-negative numbers for hours, minutes, and seconds.</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
         </div>
+      </div>
+
+      <section class="">
+        <div class="container">
+            <!-- Tabs for Stopwatch and Timer -->
+            <ul class="nav nav-tabs justify-content-center mb-4" id="modeTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="stopwatch-tab" data-bs-toggle="tab" data-bs-target="#stopwatch" type="button" role="tab">Stopwatch</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="timer-tab" data-bs-toggle="tab" data-bs-target="#timer" type="button" role="tab">Timer</button>
+              </li>
+            </ul>
+        
+            <div class="tab-content">
+              <!-- Stopwatch Tab -->
+              <div class="tab-pane fade show active" id="stopwatch" role="tabpanel">
+                <div class="time-display" id="sw-display">00:00:00.00</div>
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                  <button class="btn btn-primary" id="sw-start">Start</button>
+                  <button class="btn btn-secondary" id="sw-pause" disabled>Pause</button>
+                  <button class="btn btn-outline-secondary" id="sw-reset" disabled>Reset</button>
+                  <button class="btn btn-outline-secondary" id="sw-lap" disabled>Lap</button>
+                </div>
+                <div class="laps-title">Lap Times</div>
+                <ul class="list-group lap-list" id="sw-laps"></ul>
+              </div>
+        
+              <!-- Timer Tab -->
+              <div class="tab-pane fade" id="timer" role="tabpanel">
+                <div class="d-flex justify-content-center gap-2 mb-3">
+                  <input type="number" class="form-control w-auto" id="timer-hr" placeholder="Hr" min="0"> <span class="input-group-text border-0">:</span>
+                  <input type="number" class="form-control w-auto" id="timer-min" placeholder="Min" min="0"><span class="input-group-text border-0">:</span>
+                  <input type="number" class="form-control w-auto" id="timer-sec" placeholder="Sec" min="0" max="59">
+                </div>
+                <div class="time-display" id="tm-display">00:00:00.00</div>
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                  <button class="btn btn-primary" id="tm-start">Start</button>
+                  <button class="btn btn-secondary" id="tm-pause" disabled>Pause</button>
+                  <button class="btn btn-outline-secondary" id="tm-reset" disabled>Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
   
  
 
@@ -75,5 +115,7 @@
   <!--Custom Project JS-->
   <script src="../../assets/js/main.js"></script>
 
+  <!--Stopwatch JS-->
+  <script src="../../assets/js/stopwatch.js"></script>
     </body>
 </html>
