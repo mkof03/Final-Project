@@ -8,7 +8,15 @@
   <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../assets/css/styles.css">
   <style>
-
+    /* (1) Give a small width to images inside our weather popover */
+    .app-popover img {
+      width: 200px;
+      height: auto;
+    }
+    /* (2) Limit popover size if needed */
+    .app-popover.popover {
+      max-width: 250px;
+    }
   </style>
 </head>
 
@@ -114,7 +122,16 @@
                 <h3 class="fw-bold">Our favorite apps and features:</h3>
                 <ol>
                     <li>
-                        Weather
+                        <a href="#" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-html="true" data-bs-custom-class="app-popover" title="How Weather App Works" data-bs-content='
+                          <img src="../../assets/img/weatherss.png" class="float-end ms-2 app-image" alt="Weather diagram">
+                          <p>
+                            Weather automatically detects your location via the Geolocation API, 
+                            pulls live forecast data from OpenWeatherMap, and updates the background animation 
+                            to match current daylight or nighttime conditions.
+                          </p>
+                        '>
+                       Weather
+                     </a>
                         <ul>
                             <li>Updates based on user location</li>
                             <li>Animated GIF background based on time of day</li>
@@ -123,7 +140,17 @@
                         </ul>
                     </li>
                     <li>
-                        QR Code Generator
+                        <a href="#" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-html="true" data-bs-custom-class="app-popover" title="How QR Code Gen. Works" data-bs-content='
+                        <img src="../../assets/img/qrcodess.png" class="float-end ms-2 app-image" alt="QR Code diagram">
+                        <p>
+                            Enter any text, URL, or information you want to encode. 
+                            The generator instantly converts your input into a scannable QR code image 
+                            using a lightweight Open Source API.
+                        </p>
+                      '>
+                     QR Code Generator
+                   </a>
+                   </a>
                         <ul>
                             <li>Generates QR Code based on URL or text supplied</li>
                             <li>Instant results</li>
@@ -244,5 +271,13 @@
       e.preventDefault(); successToast.show(); e.target.reset();              
     });
   </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => {
+        new bootstrap.Popover(el);
+      });
+    });
+    </script>
 </body>
 </html>
